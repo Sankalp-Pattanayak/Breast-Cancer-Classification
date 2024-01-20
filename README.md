@@ -7,15 +7,15 @@ Logistic regression works by applying a logistic function to a linear combinatio
 
 The process of building a breast cancer classification model using logistic regression involves the following steps:
 
-Data Collection and Preprocessing: Gather a dataset containing information about breast tumors, including both malignant and benign cases. Preprocess the data to handle missing values, normalize features, and address any other issues.
+<b>Data Collection and Preprocessing: <b/> Gather a dataset containing information about breast tumors, including both malignant and benign cases. Preprocess the data to handle missing values, normalize features, and address any other issues.
 
-Feature Selection: Identify and select relevant features that contribute to the prediction of breast cancer classification. This step may involve statistical analysis and domain expertise.
+<b>Feature Selection: <b/>Identify and select relevant features that contribute to the prediction of breast cancer classification. This step may involve statistical analysis and domain expertise.
 
-Model Training: Split the dataset into training and testing sets. Train the logistic regression model on the training set, optimizing its parameters to achieve the best fit to the data.
+<b>Model Training:<b/> Split the dataset into training and testing sets. Train the logistic regression model on the training set, optimizing its parameters to achieve the best fit to the data.
 
-Model Evaluation: Evaluate the performance of the trained model on the testing set using metrics such as accuracy, precision, recall, and F1 score. Adjust the model as needed to improve its performance.
+<b>Model Evaluation:<b/> Evaluate the performance of the trained model on the testing set using metrics such as accuracy, precision, recall, and F1 score. Adjust the model as needed to improve its performance.
 
-Prediction and Classification: Once the model is trained and validated, it can be used to predict whether a new tumor is malignant or benign based on its feature values.
+<b>Prediction and Classification:<b/> Once the model is trained and validated, it can be used to predict whether a new tumor is malignant or benign based on its feature values.
 
 This approach provides a reliable and interpretable method for breast cancer classification, aiding healthcare professionals in making informed decisions about patient diagnosis and treatment. It is essential to note that while logistic regression is a powerful tool, it is just one component of a broader diagnostic process, and its results should be considered in conjunction with other clinical information and tests for comprehensive patient care.
 
