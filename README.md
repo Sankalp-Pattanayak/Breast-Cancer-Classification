@@ -36,9 +36,6 @@
   <h2>Contributing</h2>
     <p>Contributions are welcome! If you'd like to improve the model or add new features, feel free to open an issue or submit a pull request.</p>
     
-  <h2>License</h2>
-    <p>This project is licensed under the [INSERT LICENSE] License - see the <a href="LICENSE.md">LICENSE.md</a> file for details.</p>
-    
   <h2>Acknowledgments</h2>
     <ul>
         <li>The Breast Cancer Wisconsin (Diagnostic) dataset is publicly available from the UCI Machine Learning Repository.</li>
