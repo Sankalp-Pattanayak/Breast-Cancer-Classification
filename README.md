@@ -44,7 +44,6 @@
   <h2>Acknowledgments</h2>
     <ul>
         <li>The Breast Cancer Wisconsin (Diagnostic) dataset is publicly available from the UCI Machine Learning Repository.</li>
-        <li>[INSERT ANY ACKNOWLEDGMENTS OR CREDITS]</li>
     </ul>
     
   <h2>Contact</h2>
