@@ -31,7 +31,8 @@
     </ol>
     
   <h2>Results</h2>
-    <p>The model achieves an accuracy score of 97% on the test dataset, demonstrating its effectiveness in classifying breast tumors.</p>
+    <p>The model achieves an accuracy score of 98% on the test dataset, demonstrating its effectiveness in classifying breast tumors.</p>
+    <p>You can access it online using the following link: https://breast-cancer-classification-up4yrfvtcha7ovywldzguy.streamlit.app/</p>
     
   <h2>Contributing</h2>
     <p>Contributions are welcome! If you'd like to improve the model or add new features, feel free to open an issue or submit a pull request.</p>
