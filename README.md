@@ -25,7 +25,7 @@
 </code></pre>
         </li>
         <li>Run the main script to train the model and evaluate its performance:
-            <pre><code>python Breast Cancer Classification Using Machine Learning.ipynb</code></pre>
+            <pre><code>python BreastCancerPrediction.ipynb</code></pre>
         </li>
         <li>After training, you can use the trained model to make predictions on new data.</li>
     </ol>
