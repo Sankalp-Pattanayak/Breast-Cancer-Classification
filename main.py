@@ -6,59 +6,65 @@ import pickle
 with open('model.pkl', 'rb') as file:
     grid_search = pickle.load(file)
 
-# Title and description
-st.title("Breast Cancer Prediction App")
-st.write("""
-This app predicts whether breast cancer is **Malignant** or **Benign** based on input data.
-Please enter the values below:
-""")
+# Set page title and icon
+st.set_page_config(page_title="Breast Cancer Prediction",
+                   page_icon="🩺", layout="wide")
 
-# Input fields for the features
+# Custom CSS for styling
+st.markdown("""
+    <style>
+    .stApp { background-color: #f5f5f5; }
+    .main-title { color: #333366; text-align: center; font-size: 32px; font-weight: bold; }
+    .sub-title { color: #444444; text-align: center; font-size: 18px; }
+    .prediction-box { padding: 20px; border-radius: 10px; text-align: center; font-size: 20px; font-weight: bold; }
+    .benign { background-color: #d4edda; color: #155724; }
+    .malignant { background-color: #f8d7da; color: #721c24; }
+    </style>
+""", unsafe_allow_html=True)
+
+# Title and description
+st.markdown('<h1 class="main-title">🔬 Breast Cancer Prediction App</h1>',
+            unsafe_allow_html=True)
+st.markdown('<p class="sub-title">Enter the required values below and click "Predict" to see the results.</p>', unsafe_allow_html=True)
+
+# Sidebar for input fields
+st.sidebar.header("Enter Feature Values")
 input_data = []
-input_data.append(st.number_input("Mean Radius", value=13.54))
-input_data.append(st.number_input("Mean Texture", value=14.36))
-input_data.append(st.number_input("Mean Perimeter", value=87.46))
-input_data.append(st.number_input("Mean Area", value=566.3))
-input_data.append(st.number_input("Mean Smoothness", value=0.09779))
-input_data.append(st.number_input("Mean Compactness", value=0.08129))
-input_data.append(st.number_input("Mean Concavity", value=0.06664))
-input_data.append(st.number_input("Mean Concave Points", value=0.04781))
-input_data.append(st.number_input("Mean Symmetry", value=0.1885))
-input_data.append(st.number_input("Mean Fractal Dimension", value=0.05766))
-input_data.append(st.number_input("Radius Error", value=0.2699))
-input_data.append(st.number_input("Texture Error", value=0.7886))
-input_data.append(st.number_input("Perimeter Error", value=2.058))
-input_data.append(st.number_input("Area Error", value=23.56))
-input_data.append(st.number_input("Smoothness Error", value=0.008462))
-input_data.append(st.number_input("Compactness Error", value=0.0146))
-input_data.append(st.number_input("Concavity Error", value=0.02387))
-input_data.append(st.number_input("Concave Points Error", value=0.01315))
-input_data.append(st.number_input("Symmetry Error", value=0.0198))
-input_data.append(st.number_input("Fractal Dimension Error", value=0.0023))
-input_data.append(st.number_input("Worst Radius", value=15.11))
-input_data.append(st.number_input("Worst Texture", value=19.26))
-input_data.append(st.number_input("Worst Perimeter", value=99.7))
-input_data.append(st.number_input("Worst Area", value=711.2))
-input_data.append(st.number_input("Worst Smoothness", value=0.144))
-input_data.append(st.number_input("Worst Compactness", value=0.1773))
-input_data.append(st.number_input("Worst Concavity", value=0.239))
-input_data.append(st.number_input("Worst Concave Points", value=0.1288))
-input_data.append(st.number_input("Worst Symmetry", value=0.2977))
-input_data.append(st.number_input("Worst Fractal Dimension", value=0.07259))
+feature_names = [
+    "Mean Radius", "Mean Texture", "Mean Perimeter", "Mean Area", "Mean Smoothness",
+    "Mean Compactness", "Mean Concavity", "Mean Concave Points", "Mean Symmetry", "Mean Fractal Dimension",
+    "Radius Error", "Texture Error", "Perimeter Error", "Area Error", "Smoothness Error",
+    "Compactness Error", "Concavity Error", "Concave Points Error", "Symmetry Error", "Fractal Dimension Error",
+    "Worst Radius", "Worst Texture", "Worst Perimeter", "Worst Area", "Worst Smoothness",
+    "Worst Compactness", "Worst Concavity", "Worst Concave Points", "Worst Symmetry", "Worst Fractal Dimension"
+]
+
+default_values = [
+    13.54, 14.36, 87.46, 566.3, 0.09779, 0.08129, 0.06664, 0.04781, 0.1885, 0.05766,
+    0.2699, 0.7886, 2.058, 23.56, 0.008462, 0.0146, 0.02387, 0.01315, 0.0198, 0.0023,
+    15.11, 19.26, 99.7, 711.2, 0.144, 0.1773, 0.239, 0.1288, 0.2977, 0.07259
+]
+
+for i, feature in enumerate(feature_names):
+    input_data.append(st.sidebar.number_input(
+        feature, value=default_values[i]))
 
 # Prediction button
-if st.button("Predict"):
-    # Convert input data to numpy array
-    input_data_npArray = np.asarray(input_data)
-
-    # Reshape for single prediction
-    input_data_reshaped = input_data_npArray.reshape(1, -1)
+if st.sidebar.button("🔍 Predict"):
+    # Convert input data to numpy array and reshape for single prediction
+    input_data_npArray = np.asarray(input_data).reshape(1, -1)
 
     # Predict using the loaded model
-    prediction = grid_search.predict(input_data_reshaped)
+    prediction = grid_search.predict(input_data_npArray)
 
-    # Display result
+    # Display result in the main page
     if prediction[0] == 0:
-        st.success("The Breast Cancer is **Malignant**.")
+        st.markdown(
+            '<div class="prediction-box malignant">⚠️ The Breast Cancer is Malignant.</div>', unsafe_allow_html=True)
     else:
-        st.success("The Breast Cancer is **Benign**.")
+        st.markdown(
+            '<div class="prediction-box benign">✅ The Breast Cancer is Benign.</div>', unsafe_allow_html=True)
+
+# Footer
+st.markdown("<br><hr><p style='text-align:center;'>Made by Sankalp</p>",
+            unsafe_allow_html=True)
